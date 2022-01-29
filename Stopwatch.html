@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<style>
+    .b {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: chartreuse;
+    }
+    
+    #mls,
+    #min,
+    #sec {
+        width: 10%;
+    }
+</style>
+
+<body>
+    <div class="b">
+        <button onclick="count(1)">Start!</button>
+        <button onclick="stopCount()">Pause!</button>
+        <button onclick="count(2)">Lap!</button><br>
+    </div>
+    <div class="b">
+        <input id="mls">
+        <input id="sec">
+        <input id="min">
+    </div>
+    <div class="b">
+        <p id="lap"></p>
+    </div>
+    <script>
+        var x = 1,
+            y = 2;
+        var m = 0;
+        var ms = 0;
+        var t = 0;
+        var s = 0;
+        var timer_is_on = 0;
+
+        function timedCount() {
+            document.getElementById("mls").value = parseInt(m);
+            document.getElementById("min").value = parseInt(ms);
+            document.getElementById("sec").value = parseInt(s);
+            ms = ms + 1;
+            if (ms == 9) {
+                ms = 0;
+                if (s == 59) {
+                    m++;
+                    s = 0;
+                }
+                s++;
+            }
+            t = setTimeout(timedCount, 100);
+        }
+
+        function count(x) {
+            if (x == 1) {
+                if (!timer_is_on) {
+                    timer_is_on = 1;
+                    timedCount();
+                }
+            } else if (x == 2) {
+                document.getElementById("lap").innerHTML += m + "-" + s + "-" + ms + "<br>";
+                m = 0,
+                    s = 0,
+                    ms = 0;
+            }
+        }
+
+        function stopCount() {
+            clearTimeout(t);
+            timer_is_on = 0;
+        }
+    </script>
+</body>
+
+</html>
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!--Font Awesome-->
+
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--Bootstrap Bundle-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!--Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+  <!-- Jquey Link -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"> </script>
+</head>
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .image {
+    max-width: 300px;
+    margin: 25px;
+  }
+
+  .image img {
+    max-width: 100%;
+  }
+
+  .loupe {
+    display: none;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    box-shadow: 5px 5px 12px black;
+    background: rgba(0, 0, 0, 0.25);
+    cursor: crosshair;
+    overflow: hidden;
+  }
+
+  .loupe img {
+    position: absolute;
+    right: 0;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="image">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/614RBksGdwL._AC_SX425_.jpg">
+    </div>
+    <div class="loupe"></div>
+  </div>
+
+  <script>
+    var $loupe = $(".loupe"),
+      loupeWidth = $loupe.width(),
+      loupeHeight = $loupe.height();
+
+    $(document).on("mouseenter", ".image", function (e) {
+      var $currImage = $(this),
+        $img = $('<img/>')
+        .attr('src', $('img', this).attr("src"))
+        .css({
+          'width': $currImage.width() * 2,
+          'height': $currImage.height() * 2
+        });
+
+      $loupe.html($img).fadeIn(100);
+
+      $(document).on("mousemove", moveHandler);
+
+      function moveHandler(e) {
+        var imageOffset = $currImage.offset(),
+          fx = imageOffset.left - loupeWidth / 2,
+          fy = imageOffset.top - loupeHeight / 2,
+          fh = imageOffset.top + $currImage.height() + loupeHeight / 2,
+          fw = imageOffset.left + $currImage.width() + loupeWidth / 2;
+
+        $loupe.css({
+          'left': e.pageX - 75,
+          'top': e.pageY - 75
+        });
+
+        var loupeOffset = $loupe.offset(),
+          lx = loupeOffset.left,
+          ly = loupeOffset.top,
+          lw = lx + loupeWidth,
+          lh = ly + loupeHeight,
+          bigy = (ly - loupeHeight / 4 - fy) * 2,
+          bigx = (lx - loupeWidth / 4 - fx) * 2;
+
+        $img.css({
+          'left': -bigx,
+          'top': -bigy
+        });
+
+        if (lx < fx || lh > fh || ly < fy || lw > fw) {
+          $img.remove();
+          $(document).off("mousemove", moveHandler);
+          $loupe.fadeOut(100);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

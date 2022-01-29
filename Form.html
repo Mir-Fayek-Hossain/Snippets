@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $(".btn_login").click(function(){
+      $(".login").slideToggle("slow");
+      $(".signin").slideToggle("slow");
+      // this.value = 'Changed';
+      if (this.value == 'Login'){
+         this.value = 'Signup';
+         $(".formOptions p").text('Already signed up?');
+    }
+    else{ 
+      this.value = 'Login';
+      $(".formOptions p").text("Not yet signed up?");
+    }
+  });
+  });
+</script>
+</head>  
+<style>
+  *{
+    padding: 0%;
+    margin: 0%;
+  }
+  body{
+    min-height: 100vh;
+    background: linear-gradient(45deg,orange, purple);
+  }
+  
+  .login{
+    display: none;
+  }
+  
+  .formContainer{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 70px 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px black;
+  }
+  .formContainer h2{
+    padding-left: 10px;
+    margin-bottom: 30px;
+    border-left: 5px solid red;
+  }
+  .formContainer .inputBox{
+    position: relative;
+    width: 300px;
+    height: 40px;
+    margin-bottom: 20px;
+  }
+  .formContainer .inputBox:last-child{
+    margin-bottom: 0;
+  }
+  .formContainer .inputBox input{
+    position: absolute;
+    z-index: 1;
+    background-color: transparent;
+    width: 100%;
+    border: 1px solid rgb(187, 121, 0);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #111;
+    font-weight: 300;
+  }
+  .formContainer .inputBox span{
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    padding: 10px;
+    transition: .5s;
+  }
+  .formContainer .inputBox input:focus~ span,
+  .formContainer .inputBox input:valid~ span{
+    transform: translateX(3px) translateY(-10px);
+    font-size: 13px;
+    background-color:white ;
+    padding: 0 8px 0 8px;
+    z-index: 2;
+  }
+  
+  .formContainer .inputBox input[type="submit"]{
+    background: linear-gradient(90deg,rgb(69, 199, 216),blue );
+    color: white;
+    border: none;
+    max-width: 120px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 5px 5px 20px black;
+    transition: .3s;
+  }
+  .formOptions{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .formOptions p{
+    margin-right: 15px;
+  }
+  .formOptions input{
+    background: linear-gradient(90deg,rgb(190, 179, 18),rgb(255, 17, 0) );
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 5px 5px 20px black;
+    transition: .3s;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  input:active{
+    box-shadow: none;
+  }
+</style>
+<body>
+  <div class="signin formContainer">
+    <h2>hellow</h2>
+    <form action="">
+      <div class="inputBox">
+        <input type="text" required="required">
+        <span>User Name</span>
+      </div>
+      <div class="inputBox">
+        <input type="text"required="required">
+        <span>Password</span>
+      </div>
+      <div class="inputBox">
+        <input type="text"required="required">
+        <span>Confirm Password</span>
+      </div>
+      <div class="inputBox">
+        <input type="submit" value="Sign in">
+      </div>
+    </form>
+  </div>
+  <div class="login formContainer">
+    <h2>hellow</h2>
+    <form action="">
+      <div class="inputBox">
+        <input type="text" required="required">
+        <span>User Name</span>
+      </div>
+      <div class="inputBox">
+        <input type="text"required="required">
+        <span>Password</span>
+      </div>
+      <div class="inputBox">
+        <input type="submit" value="Log in">
+      </div>
+    </form>
+  </div>
+  <div class="formOptions">
+    <p>Already signed up?</p>
+    <input type="button" class="btn_login" value="Login">
+  </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link href='https://fonts.googleapis.com/css?family=Sancreek' rel='stylesheet'>
+
+    <style>
+    body {
+            font-family: 'Sancreek';
+            font-size: 5vw;
+            display: grid;
+            margin: 0px;
+            justify-content: center;
+            background-color: rgb(1, 28, 39);
+        }
+        
+        p {
+            display: flex;
+            justify-content: center;
+            color: rgb(12, 6, 99);
+            text-shadow: 0 0 9px #dddddd;
+            background: rgb(8, 44, 141);
+            padding: 10px;
+            width: 600px;
+            border-radius: 20px;
+            box-shadow: 0 0 100px blue;
+            margin: 20px 20px 20px 20px;
+        }
+        
+        div {
+            margin-top: 60px;
+            margin-bottom: 80px;
+            border-radius: 25px;
+            border: 3px solid rgb(57, 45, 223);
+            box-shadow: 0 0 80px rgb(69, 189, 236);
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p id="clock"></p>
+    </div>
+    <p style="font-size: 4vw;">Make this day GREAT</p>
+
+    <script>
+        var b = new Date();
+        var weekday = new Array(7);
+        weekday[0] = "SUNd";
+        weekday[1] = "MOnN";
+        weekday[2] = "TUE";
+        weekday[3] = "WED";
+        weekday[4] = "THU";
+        weekday[5] = "FRI";
+        weekday[6] = "SAT";
+
+        var n = weekday[b.getDay()];
+        document.getElementById("clock").innerHTML = n + " " + new Date().toLocaleTimeString();
+        setInterval(clck, 1000);
+
+        function clck() {
+            var d = new Date();
+            document.getElementById("clock").innerHTML = n + "   " + d.toLocaleTimeString();
+        }
+    </script>
+</body>
+
+</html>

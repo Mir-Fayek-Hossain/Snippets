@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .sub-container {
+        width: 200px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    input {
+        margin-top: 2%;
+        width: 40%;
+        margin-bottom: 2%;
+        border-radius: 25%;
+    }
+    
+    button {
+        background: linear-gradient(to bottom, #4eb5e5 0%, #389ed5 100%);
+        border: none;
+        border-radius: 5px;
+        position: relative;
+        border-bottom: 4px solid #2b8bc6;
+        color: #fbfbfb;
+        font-weight: 600;
+        font-family: 'Open Sans', sans-serif;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+        font-size: 15px;
+        text-align: left;
+        text-indent: 5px;
+        box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, .2);
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    
+    button:active {
+        box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, .2);
+        top: 1px;
+    }
+    
+    button.site {
+        width: 40px;
+        text-align: center;
+        text-indent: 0;
+    }
+</style>
+
+<body>
+    <div>
+        <div class="sub-container">
+            <input id="reasult"><br>
+            <button style="width: 100px;background: mediumblue;" class="site" onclick="run()">=</button>
+        </div>
+        <div class="sub-container">
+            <button class="site" onclick="myFunc(1)">1</button>
+            <button class="site" onclick="myFunc(2)">2</button>
+            <button class="site" onclick="myFunc(3)">3</button>
+            <button class="site" onclick="myFunc(10)">+</button><br>
+        </div>
+        <div class="sub-container">
+            <button class="site" onclick="myFunc(4)">4</button>
+            <button class="site" onclick="myFunc(5)">5</button>
+            <button class="site" onclick="myFunc(6)">6</button>
+            <button class="site" onclick="myFunc(11)">-</button><br>
+        </div>
+        <div class="sub-container">
+            <button class="site" onclick="myFunc(7)">7</button>
+            <button class="site" onclick="myFunc(8)">8</button>
+            <button class="site" onclick="myFunc(9)">9</button>
+            <button class="site" onclick="myFunc(12)">x</button><br>
+        </div>
+        <div class="sub-container">
+            <button class="site" onclick="myFunc(0)">0</button>
+            <button class="site" onclick="myFunc(10)">.</button>
+            <button class="site" onclick="erase()">c</button>
+            <button class="site" onclick="myFunc(13)">/</button><br>
+        </div>
+    </div>
+    <script>
+        let input = "";
+
+        function myFunc(x) {
+            if (x == 1) {
+                input += 1;
+            } else if (x == 2) {
+                input += 2;
+            } else if (x == 3) {
+                input += 3;
+            } else if (x == 4) {
+                input += 4;
+            } else if (x == 5) {
+                input += 5;
+            } else if (x == 6) {
+                input += 6;
+            } else if (x == 7) {
+                input += 7;
+            } else if (x == 8) {
+                input += 8;
+            } else if (x == 9) {
+                input += 9;
+            } else if (x == 0) {
+                input += 0;
+            } else if (x == 10) {
+                input += "+";
+            } else if (x == 11) {
+                input += "-";
+            } else if (x == 12) {
+                input += "*";
+            } else if (x == 13) {
+                input += "/";
+            }
+            document.getElementById("reasult").value = input;
+        }
+
+        function erase() {
+            document.getElementById("reasult").value = "";
+            input = "";
+        }
+
+        function run() {
+            document.getElementById("reasult").value = (eval(input));
+        }
+    </script>
+</body>
+
+</html>
+</script>
+</body>
+
+</html>
